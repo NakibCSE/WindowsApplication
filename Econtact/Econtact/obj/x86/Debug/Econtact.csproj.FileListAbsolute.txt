@@ -1,0 +1,9 @@
+E:\WindowsApplication\Econtact\Econtact\bin\Debug\Econtact.exe.config
+E:\WindowsApplication\Econtact\Econtact\bin\Debug\Econtact.exe
+E:\WindowsApplication\Econtact\Econtact\bin\Debug\Econtact.pdb
+E:\WindowsApplication\Econtact\Econtact\obj\x86\Debug\Econtact.Properties.Resources.resources
+E:\WindowsApplication\Econtact\Econtact\obj\x86\Debug\Econtact.Econtact.resources
+E:\WindowsApplication\Econtact\Econtact\obj\x86\Debug\Econtact.csproj.GenerateResource.Cache
+E:\WindowsApplication\Econtact\Econtact\obj\x86\Debug\Econtact.exe
+E:\WindowsApplication\Econtact\Econtact\obj\x86\Debug\Econtact.pdb
+E:\WindowsApplication\Econtact\Econtact\obj\x86\Debug\Econtact.csprojResolveAssemblyReference.cache
