@@ -6,4 +6,3 @@ E:\WindowsApplication\Econtact\Econtact\obj\x86\Debug\Econtact.Econtact.resource
 E:\WindowsApplication\Econtact\Econtact\obj\x86\Debug\Econtact.csproj.GenerateResource.Cache
 E:\WindowsApplication\Econtact\Econtact\obj\x86\Debug\Econtact.exe
 E:\WindowsApplication\Econtact\Econtact\obj\x86\Debug\Econtact.pdb
-E:\WindowsApplication\Econtact\Econtact\obj\x86\Debug\Econtact.csprojResolveAssemblyReference.cache

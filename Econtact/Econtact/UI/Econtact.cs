@@ -73,19 +73,10 @@ namespace Econtact
             c.ContactNo = textBoxContactNo.Text;
             c.Address = textBoxAddress.Text;
             c.Gender = cmbGender.Text;
+
             //Inserting data into our database using the method we created
-
-
-
-            bool succes = c.Insert(c);
-            if (succes == true)
-            {
-                MessageBox.Show("New Contact Successfully Inserted");
-            }
-            else
-            {
-                MessageBox.Show("Failed to insert new Contact");
-            }
+            c.Insert(c);
+          
             //Show data on data grid view
             DataTable dt = c.Select();
             dgvContactList.DataSource = dt;
@@ -133,25 +124,15 @@ namespace Econtact
             c.Gender = cmbGender.Text;
 
             //Update data in database
-            bool success = c.Update(c);
+            c.Update(c);
 
-            if (success == true)
-            {
-                //Updated successfully
-                MessageBox.Show("Contact has been updated successfully");
-                //Show data on data grid view
-                DataTable dt = c.Select();
-                dgvContactList.DataSource = dt;
+            //Show data on data grid view
+            DataTable dt = c.Select();
+            dgvContactList.DataSource = dt;
 
-                //Clear data field
-                clear();
+            //Clear data field
+            clear();
 
-            }
-            else
-            {
-                //Failed to update 
-                MessageBox.Show("Contact Failed to update");
-            }
         }
 
         private void btnClear_Click(object sender, EventArgs e)
@@ -164,25 +145,15 @@ namespace Econtact
         {
             //Get the contact ID from the application
             c.ContactID = Convert.ToInt32(textBoxContactID.Text);
-            bool success = c.Delete(c);
-            if (success == true)
-            {
-                //Successfully deleted
-                MessageBox.Show("Contact Sucessfully Deleted");
+            c.Delete(c);
 
-                //Refresh the data grid view
-                //Show data on data grid view
-                DataTable dt = c.Select();
-                dgvContactList.DataSource = dt;
+            // Clear data field
+               clear();
 
-                //Clear data field
-                clear();
-            }
-            else
-            { 
-                //Failed to delete 
-                MessageBox.Show("Failed to delete contact. Try again");
-            }
+            //Refresh the data grid view
+            //Show data on data grid view
+              DataTable dt = c.Select();
+              dgvContactList.DataSource = dt;
         }
 
         SqlConnection conn = new SqlConnection(Global.DBCon);

@@ -1,7 +1,11 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33723.286
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Econtact", "Econtact\Econtact.csproj", "{8926DD26-BCE9-4803-8C4F-0CBB93DDD99A}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "EcontactExe", "EcontactExe\EcontactExe.vdproj", "{58369ACA-2C5B-4784-845E-CFCE4DE0BCFB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,6 +17,8 @@ Global
 		{8926DD26-BCE9-4803-8C4F-0CBB93DDD99A}.Debug|x86.Build.0 = Debug|x86
 		{8926DD26-BCE9-4803-8C4F-0CBB93DDD99A}.Release|x86.ActiveCfg = Release|x86
 		{8926DD26-BCE9-4803-8C4F-0CBB93DDD99A}.Release|x86.Build.0 = Release|x86
+		{58369ACA-2C5B-4784-845E-CFCE4DE0BCFB}.Debug|x86.ActiveCfg = Debug
+		{58369ACA-2C5B-4784-845E-CFCE4DE0BCFB}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
