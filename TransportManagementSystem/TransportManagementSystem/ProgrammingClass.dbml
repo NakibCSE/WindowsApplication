@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Vehicle" Class="ProgrammingClassDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=NAKIBNB\MSSQLSERVER02;Initial Catalog=Vehicle;Integrated Security=True" SettingsObjectName="TransportManagementSystem.Properties.Settings" SettingsPropertyName="VehicleConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.VehicleType_Mst" Member="VehicleType_Msts">
+    <Type Name="VehicleType_Mst">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="isActive" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="VehicleType_Dtl_VehicleType_Mst" Member="VehicleType_Dtl" ThisKey="ID" OtherKey="ID" Type="VehicleType_Dtl" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VehicleType_Dtl" Member="VehicleType_Dtls">
+    <Type Name="VehicleType_Dtl">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="RegistrationNo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Note" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="VehicleType_Dtl_VehicleType_Mst" Member="VehicleType_Mst" ThisKey="ID" OtherKey="ID" Type="VehicleType_Mst" Cardinality="One" />
+    </Type>
+  </Table>
+</Database>
