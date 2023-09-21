@@ -1,0 +1,696 @@
+Table 01;
+
+USE [HRMS]
+GO
+
+/****** Object:  Table [dbo].[VehicleStartingPoint]    Script Date: 2023-09-21 16:06:26 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[VehicleStartingPoint](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[SectorID] [int] NOT NULL,
+	[VehicleID] [int] NOT NULL,
+	[RouteID] [int] NULL,
+	[Name] [nvarchar](150) NOT NULL,
+	[IsActive] [bit] NOT NULL,
+ CONSTRAINT [PK_VehicleStartingPoint] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [SECONDARY]
+) ON [SECONDARY]
+GO
+
+ALTER TABLE [dbo].[VehicleStartingPoint] ADD  CONSTRAINT [DF_VehicleStartingPoint_IsActive]  DEFAULT ((1)) FOR [IsActive]
+GO
+
+ALTER TABLE [dbo].[VehicleStartingPoint]  WITH CHECK ADD  CONSTRAINT [FK_VehicleStartingPoint_TransportRoute] FOREIGN KEY([RouteID])
+REFERENCES [dbo].[TransportRoute] ([ID])
+GO
+
+ALTER TABLE [dbo].[VehicleStartingPoint] CHECK CONSTRAINT [FK_VehicleStartingPoint_TransportRoute]
+GO
+
+ALTER TABLE [dbo].[VehicleStartingPoint]  WITH CHECK ADD  CONSTRAINT [FK_VehicleStartingPoint_VehicleSector] FOREIGN KEY([SectorID])
+REFERENCES [dbo].[VehicleSector] ([ID])
+GO
+
+ALTER TABLE [dbo].[VehicleStartingPoint] CHECK CONSTRAINT [FK_VehicleStartingPoint_VehicleSector]
+GO
+
+ALTER TABLE [dbo].[VehicleStartingPoint]  WITH CHECK ADD  CONSTRAINT [FK_VehicleStartingPoint_VehicleType_Mst] FOREIGN KEY([VehicleID])
+REFERENCES [dbo].[VehicleType_Mst] ([ID])
+GO
+
+ALTER TABLE [dbo].[VehicleStartingPoint] CHECK CONSTRAINT [FK_VehicleStartingPoint_VehicleType_Mst]
+GO
+
+
+Table 02: 
+USE [HRMS]
+GO
+
+/****** Object:  Table [dbo].[VehicleType_Mst]    Script Date: 2023-09-21 16:07:25 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[VehicleType_Mst](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](50) NULL,
+	[IsActive] [bit] NULL,
+ CONSTRAINT [PK_VehicleType_Mst] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [SECONDARY]
+) ON [SECONDARY]
+GO
+
+ALTER TABLE [dbo].[VehicleType_Mst] ADD  CONSTRAINT [DF_VehicleType_Mst_IsActive]  DEFAULT ((1)) FOR [IsActive]
+GO
+
+ALTER TABLE [dbo].[VehicleType_Mst]  WITH CHECK ADD  CONSTRAINT [FK_VehicleType_Mst_VehicleType_Mst] FOREIGN KEY([ID])
+REFERENCES [dbo].[VehicleType_Mst] ([ID])
+GO
+
+ALTER TABLE [dbo].[VehicleType_Mst] CHECK CONSTRAINT [FK_VehicleType_Mst_VehicleType_Mst]
+GO
+
+Table 03:
+USE [HRMS]
+GO
+
+/****** Object:  Table [dbo].[VehicleType_Dtl]    Script Date: 2023-09-21 16:07:51 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[VehicleType_Dtl](
+	[ID] [int] NOT NULL,
+	[RegistrationNo] [nvarchar](50) NULL,
+	[Note] [nvarchar](50) NULL
+) ON [SECONDARY]
+GO
+
+ALTER TABLE [dbo].[VehicleType_Dtl]  WITH CHECK ADD  CONSTRAINT [FK_VehicleType_Dtl_VehicleType_Mst] FOREIGN KEY([ID])
+REFERENCES [dbo].[VehicleType_Mst] ([ID])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+
+ALTER TABLE [dbo].[VehicleType_Dtl] CHECK CONSTRAINT [FK_VehicleType_Dtl_VehicleType_Mst]
+GO
+
+
+Table 04:
+USE [HRMS]
+GO
+
+/****** Object:  Table [dbo].[TransportRoute]    Script Date: 2023-09-21 16:08:23 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[TransportRoute](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](50) NULL,
+ CONSTRAINT [PK_TransportRoute] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [SECONDARY]
+) ON [SECONDARY]
+GO
+
+
+Table 05:
+USE [HRMS]
+GO
+
+/****** Object:  Table [dbo].[VehicleStartingPoint]    Script Date: 2023-09-21 16:08:53 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[VehicleStartingPoint](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[SectorID] [int] NOT NULL,
+	[VehicleID] [int] NOT NULL,
+	[RouteID] [int] NULL,
+	[Name] [nvarchar](150) NOT NULL,
+	[IsActive] [bit] NOT NULL,
+ CONSTRAINT [PK_VehicleStartingPoint] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [SECONDARY]
+) ON [SECONDARY]
+GO
+
+ALTER TABLE [dbo].[VehicleStartingPoint] ADD  CONSTRAINT [DF_VehicleStartingPoint_IsActive]  DEFAULT ((1)) FOR [IsActive]
+GO
+
+ALTER TABLE [dbo].[VehicleStartingPoint]  WITH CHECK ADD  CONSTRAINT [FK_VehicleStartingPoint_TransportRoute] FOREIGN KEY([RouteID])
+REFERENCES [dbo].[TransportRoute] ([ID])
+GO
+
+ALTER TABLE [dbo].[VehicleStartingPoint] CHECK CONSTRAINT [FK_VehicleStartingPoint_TransportRoute]
+GO
+
+ALTER TABLE [dbo].[VehicleStartingPoint]  WITH CHECK ADD  CONSTRAINT [FK_VehicleStartingPoint_VehicleSector] FOREIGN KEY([SectorID])
+REFERENCES [dbo].[VehicleSector] ([ID])
+GO
+
+ALTER TABLE [dbo].[VehicleStartingPoint] CHECK CONSTRAINT [FK_VehicleStartingPoint_VehicleSector]
+GO
+
+ALTER TABLE [dbo].[VehicleStartingPoint]  WITH CHECK ADD  CONSTRAINT [FK_VehicleStartingPoint_VehicleType_Mst] FOREIGN KEY([VehicleID])
+REFERENCES [dbo].[VehicleType_Mst] ([ID])
+GO
+
+ALTER TABLE [dbo].[VehicleStartingPoint] CHECK CONSTRAINT [FK_VehicleStartingPoint_VehicleType_Mst]
+GO
+
+table 06:
+USE [HRMS]
+GO
+
+/****** Object:  Table [dbo].[PickupPoints]    Script Date: 2023-09-21 16:09:36 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[PickupPoints](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[StartingPointID] [int] NOT NULL,
+	[Name] [nvarchar](250) NULL,
+	[Note] [nvarchar](250) NULL,
+	[IsActive] [bit] NULL,
+ CONSTRAINT [PK_PickupPoints] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [SECONDARY]
+) ON [SECONDARY]
+GO
+
+ALTER TABLE [dbo].[PickupPoints] ADD  CONSTRAINT [DF_PickupPoints_IsActive]  DEFAULT ((1)) FOR [IsActive]
+GO
+
+ALTER TABLE [dbo].[PickupPoints]  WITH CHECK ADD  CONSTRAINT [FK_PickupPoints_VehicleStartingPoint] FOREIGN KEY([StartingPointID])
+REFERENCES [dbo].[VehicleStartingPoint] ([ID])
+GO
+
+ALTER TABLE [dbo].[PickupPoints] CHECK CONSTRAINT [FK_PickupPoints_VehicleStartingPoint]
+GO
+
+
+
+
+Store procedures:
+1)
+USE [HRMS]
+GO
+/****** Object:  StoredProcedure [dbo].[sprSelectVehicleSector]    Script Date: 2023-09-21 16:12:17 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =====================================================================
+-- Author & Modify	: Md. Nazim Uddin (Nakib)
+-- Create date		: 2023-09-14
+-- Description		: Store procedure to select existing vehicle sector.
+-- ======================================================================
+ALTER PROCEDURE [dbo].[sprSelectVehicleSector]
+AS
+BEGIN
+	SET NOCOUNT ON;
+	SELECT ID, Name, IsActive
+	FROM VehicleSector
+	SET NOCOUNT OFF;
+END
+
+2)
+USE [HRMS]
+GO
+/****** Object:  StoredProcedure [dbo].[sprCreateVehicleSector]    Script Date: 2023-09-21 16:12:48 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================================
+-- Author:		Md. Nazim Uddin (Nakib)
+-- Create date: 2023-09-14
+-- Description:	Store procedure for creating new vehicle sector.
+-- =============================================================
+
+ALTER PROCEDURE [dbo].[sprCreateVehicleSector]
+(
+	@Name varchar(50),
+	@IsActive bit,
+	@ResultMessage NVARCHAR(100) OUTPUT
+)
+AS
+BEGIN
+	SET NOCOUNT ON;
+	BEGIN TRY
+		INSERT INTO VehicleSector(Name, IsActive) values (@Name,@IsActive);
+		set @ResultMessage = 'New Vehicle Sector '+@Name+' Created Successfully.';
+	END TRY
+	BEGIN CATCH
+		set @ResultMessage = 'Failed to create new Vehicle Sector '+@Name+'.';
+	END CATCH
+	SET NOCOUNT OFF;
+End;
+
+
+3)
+USE [HRMS]
+GO
+/****** Object:  StoredProcedure [dbo].[sprUpdateVehicleSector]    Script Date: 2023-09-21 16:13:14 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =====================================================
+-- Author:		Md. Nazim Uddin (Nakib)
+-- Create date: 2023-09-14
+-- Description:	Store procedure to update vehicle sector.
+-- ======================================================
+ALTER PROCEDURE [dbo].[sprUpdateVehicleSector]
+(
+	@ID int,
+	@Name varchar(50),
+	@IsActive bit,
+	@ResultMessage NVARCHAR(100) OUTPUT
+)
+AS
+Begin
+	SET NOCOUNT ON;
+	BEGIN TRY
+		UPDATE VehicleSector SET Name=@Name, IsActive=@IsActive
+		where ID=@ID;
+		SET @ResultMessage = 'Vehicle Sector '+@Name+' Updated Successfully.';
+	END TRY
+	BEGIN CATCH
+		SET @ResultMessage = 'Failed to Update Vehicle Sector '+@Name+'';
+	END CATCH
+	SET NOCOUNT OFF;
+End;
+
+4)
+USE [HRMS]
+GO
+/****** Object:  StoredProcedure [dbo].[sprCreateVehicleType]    Script Date: 2023-09-21 16:13:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- =====================================================
+-- Author:		Md. Nazim Uddin (Nakib)
+-- Create date: 2023-09-14
+-- Description:	Store procedure to create new vehicle type.
+-- ======================================================
+ALTER PROCEDURE [dbo].[sprCreateVehicleType]
+(
+    @Name VARCHAR(50),
+    @IsActive bit,
+    @RegistrationNo VARCHAR(50),
+	@Note VARCHAR(50),
+	@ResultMessage NVARCHAR(100) OUTPUT
+)
+AS
+BEGIN
+	SET NOCOUNT ON;
+    BEGIN TRY
+		-- Insert into the MasterTable
+		INSERT INTO VehicleType_Mst (Name, IsActive)
+		VALUES (@Name, @IsActive)
+
+		-- Get the ID of the newly inserted master record
+		DECLARE @MasterID INT
+		SET @MasterID = SCOPE_IDENTITY()
+
+		-- Insert into the DetailTable with the MasterID as a foreign key
+		INSERT INTO VehicleType_Dtl(ID, RegistrationNo, Note)
+		VALUES (@MasterID, @RegistrationNo, @Note)
+		SET @ResultMessage = 'New Vehicle Type '+@Name+' Created Successfully.';
+	END TRY
+	BEGIN CATCH
+		SET @ResultMessage = 'Failed to create new vehicle type '+@Name+'';
+	END CATCH
+	SET NOCOUNT OFF;
+END
+
+5)
+USE [HRMS]
+GO
+/****** Object:  StoredProcedure [dbo].[sprSelectVehicleType]    Script Date: 2023-09-21 16:14:08 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- ===========================================================
+-- Author:		Md. Nazim Uddin (Nakib)
+-- Create date: 2023-09-14
+-- Description:	Store procedure to Select existing vehicle type.
+-- =============================================================
+ALTER PROCEDURE [dbo].[sprSelectVehicleType]
+AS
+BEGIN
+	SET NOCOUNT ON;
+    Select mst.ID, mst.Name, mst.isActive, dtl.RegistrationNo, dtl.Note FROM VehicleType_Mst mst INNER JOIN VehicleType_Dtl dtl on mst.ID = dtl.ID
+	SET NOCOUNT OFF;
+END
+
+6)
+USE [HRMS]
+GO
+/****** Object:  StoredProcedure [dbo].[sprUpdateVehicleType]    Script Date: 2023-09-21 16:14:40 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =====================================================
+-- Author:		Md. Nazim Uddin (Nakib)
+-- Create date: 2023-09-14
+-- Description:	Store procedure to update vehicle type.
+-- ======================================================
+ALTER PROCEDURE [dbo].[sprUpdateVehicleType]
+(
+	@ID int,
+	@Name VARCHAR(50),
+    @IsActive bit,
+    @RegistrationNo VARCHAR(50),
+	@Note VARCHAR(50),
+	@ResultMessage NVARCHAR(100) OUTPUT
+)
+AS
+BEGIN
+	SET NOCOUNT ON;
+	BEGIN TRY
+		  UPDATE VehicleType_Dtl SET RegistrationNo=@RegistrationNo, Note=@Note WHERE ID=@ID
+          UPDATE VehicleType_Mst SET Name=@Name, isActive=@isActive WHERE ID=@ID
+		  SET @ResultMessage = 'Vehicle Type '+@Name+' Updated Successfully.';
+	END TRY
+
+	BEGIN CATCH
+		  SET @ResultMessage = 'Failed to update vehicle '+@Name+'.';
+	END CATCH
+	SET NOCOUNT OFF;
+END
+
+7)
+USE [HRMS]
+GO
+/****** Object:  StoredProcedure [dbo].[sprCreateTransportRoute]    Script Date: 2023-09-21 16:15:05 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+-- ==========================================================
+-- Author:		Md. Nazim Uddin (Nakib)
+-- Create date: 2023-09-14
+-- Description:	Store procedure to create new transport route.
+-- ===========================================================
+ALTER PROCEDURE [dbo].[sprCreateTransportRoute]
+(
+	@Name VARCHAR(50),
+	@ResultMessage NVARCHAR(100) OUTPUT
+)
+AS
+BEGIN
+	SET NOCOUNT ON;
+	BEGIN TRY
+		  INSERT INTO TransportRoute(Name) VALUES(@Name)
+		  SET @ResultMessage = 'New Transport route '+@Name+' created Successfully.';
+	END TRY
+
+	BEGIN CATCH
+		  SET @ResultMessage = 'Failed to create new transport route '+@Name+'.';
+	END CATCH
+	SET NOCOUNT OFF;
+END
+
+8)
+USE [HRMS]
+GO
+/****** Object:  StoredProcedure [dbo].[sprSelectTransportRoute]    Script Date: 2023-09-21 16:15:37 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- ================================================================
+-- Author:		Md. Nazim Uddin (Nakib)
+-- Create date: 2023-09-14
+-- Description:	Store procedure to select existing transport route.
+-- ================================================================
+ALTER PROCEDURE [dbo].[sprSelectTransportRoute]
+AS
+BEGIN
+	SET NOCOUNT ON;
+	SELECT ID, NAME FROM TransportRoute
+	SET NOCOUNT OFF;
+END
+
+9)
+USE [HRMS]
+GO
+/****** Object:  StoredProcedure [dbo].[sprUpdateTransportRoute]    Script Date: 2023-09-21 16:16:00 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- ================================================================
+-- Author:		Md. Nazim Uddin (Nakib)
+-- Create date: 2023-09-14
+-- Description:	Store procedure to update existing transport route.
+-- ================================================================
+ALTER PROCEDURE [dbo].[sprUpdateTransportRoute]
+(
+	@ID INT,
+	@Name VARCHAR(50),
+	@ResultMessage NVARCHAR(100) OUTPUT
+)
+AS
+BEGIN
+	SET NOCOUNT ON;
+	BEGIN TRY
+		UPDATE transportroute SET Name=@Name WHERE ID=@ID
+		SET @ResultMessage = 'Transport route '+@Name+' updated successfully.'
+	END TRY
+	BEGIN CATCH
+		SET @ResultMessage = 'Failed to update transport route '+@Name+'.'
+	END CATCH
+	SET NOCOUNT OFF;
+END
+
+10)
+USE [HRMS]
+GO
+/****** Object:  StoredProcedure [dbo].[sprCreateVehicleStartingPoint]    Script Date: 2023-09-21 16:16:26 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- ==================================================================
+-- Author:		Md. Nazim Uddin (Nakib)
+-- Create date: 2023-09-16
+-- Description:	Store procedure to create new vehicle starting point.
+-- ==================================================================
+ALTER PROCEDURE [dbo].[sprCreateVehicleStartingPoint]
+(
+	@SectorID INT,
+	@VehicleID INT,
+	@RouteID INT,
+    @Name VARCHAR(150),
+	@IsActive bit,
+	@ResultMessage NVARCHAR(100) OUTPUT
+)
+AS
+BEGIN
+	SET NOCOUNT ON;
+	BEGIN TRY
+		  INSERT INTO VehicleStartingPoint(SectorID, VehicleID, RouteID, Name, IsActive)
+		  VALUES(@SectorID, @VehicleID, @RouteID, @Name, @IsActive)
+		  SET @ResultMessage = 'New Vehicle Starting Point ' + @Name + ' Created Successfully.';
+	END TRY
+
+	BEGIN CATCH
+		  SET @ResultMessage = 'Failed to Create New Vehicle Starting Point ' + @Name + ' ';
+	END CATCH
+	SET NOCOUNT OFF;
+END
+
+11)
+USE [HRMS]
+GO
+/****** Object:  StoredProcedure [dbo].[sprSelectVehicleStartingPoint]    Script Date: 2023-09-21 16:16:57 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- ======================================================================
+-- Author:		Md. Nazim Uddin (Nakib)
+-- Create date: 2023-09-16
+-- Description:	Store procedure to Select existing vehicle starting point.
+-- ======================================================================
+ALTER PROCEDURE [dbo].[sprSelectVehicleStartingPoint]
+AS
+BEGIN
+	SET NOCOUNT ON;
+	SELECT STP.ID, SEC.[Name] AS 'Sector Name' , VEH.[Name] AS 'Vehicle Type', RT.[Name] AS 'Transport Route', STP.[Name], STP.IsActive
+	FROM VehicleStartingPoint STP
+	JOIN VehicleSector SEC ON STP.SectorID = SEC.ID
+	JOIN VehicleType_Mst VEH ON STP.VehicleID = VEH.ID
+	JOIN TransportRoute RT ON STP.RouteID = RT.ID
+	SET NOCOUNT OFF;
+END
+
+12)
+USE [HRMS]
+GO
+/****** Object:  StoredProcedure [dbo].[sprUpdateVehicleStartingPoint]    Script Date: 2023-09-21 16:17:19 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- ======================================================================
+-- Author:		Md. Nazim Uddin (Nakib)
+-- Create date: 2023-09-16
+-- Description:	Store procedure to Update existing vehicle starting point.
+-- ======================================================================
+ALTER PROCEDURE [dbo].[sprUpdateVehicleStartingPoint]
+(
+	@ID INT,
+	@SectorID INT,
+	@VehicleID INT,
+	@RouteID INT,
+	@Name VARCHAR(150),
+	@IsActive BIT,
+	@ResultMessage VARCHAR(150) OUTPUT
+)
+AS
+BEGIN
+	SET NOCOUNT ON;
+	BEGIN TRY
+		UPDATE VehicleStartingPoint 
+		SET SectorID=@SectorID, VehicleID=@VehicleID, RouteID=@RouteID, Name=@Name, IsActive=@IsActive
+		WHERE ID=@ID
+		SET @ResultMessage = 'Vehicle Starting Point '+@Name+' Updated Successfully'
+	END TRY
+		
+	BEGIN CATCH
+		SET @ResultMessage = 'Failed to update Vehicle Starting Point '+@Name+' '
+	END CATCH
+	SET NOCOUNT OFF;
+END
+
+13)
+USE [HRMS]
+GO
+/****** Object:  StoredProcedure [dbo].[sprCreateVehiclePickupPoints]    Script Date: 2023-09-21 16:17:44 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- ==================================================================
+-- Author:		Md. Nazim Uddin (Nakib)
+-- Create date: 2023-09-16
+-- Description:	Store procedure to create new vehicle pickup point.
+-- ==================================================================
+ALTER PROCEDURE [dbo].[sprCreateVehiclePickupPoints]
+(
+	@StartingPointID INT,
+    @Name VARCHAR(250),
+	@Note VARCHAR(250),
+	@IsActive BIT,
+	@ResultMessage NVARCHAR(100) OUTPUT
+)
+AS
+BEGIN
+	SET NOCOUNT ON;
+	BEGIN TRY
+		  INSERT INTO PickupPoints(StartingPointID, Name, Note,IsActive)
+		  VALUES(@StartingPointID, @Name, @Note, @IsActive)
+		  SET @ResultMessage = 'New Vehicle Pickup Point '+@Name+' Created Successfully.';
+	END TRY
+
+	BEGIN CATCH
+		  SET @ResultMessage = 'Failed to Create New Vehicle Pickup Point '+@Name+'';
+	END CATCH
+	SET NOCOUNT OFF;
+END
+14)
+USE [HRMS]
+GO
+/****** Object:  StoredProcedure [dbo].[sprSelectVehiclePickupPoints]    Script Date: 2023-09-21 16:18:14 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =====================================================================
+-- Author:		Md. Nazim Uddin (Nakib)
+-- Create date: 2023-09-16
+-- Description:	Store procedure to select existing vehicle pickup point.
+-- =====================================================================
+ALTER PROCEDURE [dbo].[sprSelectVehiclePickupPoints]
+AS
+BEGIN
+	SET NOCOUNT ON;
+	SELECT PUP.ID, STP.[Name] AS 'StartingPoint Name', PUP.[Name], PUP.Note, PUP.IsActive FROM PickupPoints PUP JOIN VehicleStartingPoint STP ON PUP.StartingPointID = STP.ID
+	SET NOCOUNT OFF;
+END
+15)
+
+USE [HRMS]
+GO
+/****** Object:  StoredProcedure [dbo].[sprUpdateVehiclePickupPoints]    Script Date: 2023-09-21 16:19:00 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =====================================================================
+-- Author:		Md. Nazim Uddin (Nakib)
+-- Create date: 2023-09-16
+-- Description:	Store procedure to update existing vehicle pickup point.
+-- =====================================================================
+ALTER PROCEDURE [dbo].[sprUpdateVehiclePickupPoints]
+(
+	@ID INT,
+	@StartingPointID INT,
+	@Name VARCHAR(250),
+	@Note VARCHAR(250),
+	@IsActive BIT,
+	@ResultMessage VARCHAR(100) OUTPUT
+)
+AS
+BEGIN
+	SET NOCOUNT ON;
+		BEGIN TRY
+			UPDATE PickupPoints
+			SET StartingPointID = @StartingPointID, Name=@Name, Note=@Note, IsActive=@IsActive
+			WHERE ID=@ID
+			SET @ResultMessage = 'Vehicle Pickup point '+@Name+' updated successfully.'
+		END TRY
+		BEGIN CATCH
+			SET @ResultMessage = 'Failed to update vehicle pickup point '+@Name+'.'
+		END CATCH
+	SET NOCOUNT OFF;
+END

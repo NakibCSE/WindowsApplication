@@ -41,6 +41,7 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.lblSearch = new System.Windows.Forms.Label();
             this.textBoxSearch = new System.Windows.Forms.TextBox();
+            this.btnClear = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVehicleSectorList)).BeginInit();
             this.SuspendLayout();
             // 
@@ -100,7 +101,7 @@
             this.btnSave.BackColor = System.Drawing.Color.Green;
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(60, 187);
+            this.btnSave.Location = new System.Drawing.Point(6, 187);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 31);
             this.btnSave.TabIndex = 7;
@@ -113,7 +114,7 @@
             this.btnClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(224, 187);
+            this.btnClose.Location = new System.Drawing.Point(247, 187);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 31);
             this.btnClose.TabIndex = 8;
@@ -141,15 +142,14 @@
             this.dgvVehicleSectorList.ReadOnly = true;
             this.dgvVehicleSectorList.Size = new System.Drawing.Size(380, 158);
             this.dgvVehicleSectorList.TabIndex = 10;
-            this.dgvVehicleSectorList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvVehicleSectorList_CellContentClick);
             this.dgvVehicleSectorList.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvVehicleSectorList_RowHeaderMouseClick);
             // 
             // btnUpdate
             // 
             this.btnUpdate.BackColor = System.Drawing.Color.Yellow;
             this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.ForeColor = System.Drawing.Color.White;
-            this.btnUpdate.Location = new System.Drawing.Point(143, 187);
+            this.btnUpdate.ForeColor = System.Drawing.Color.Black;
+            this.btnUpdate.Location = new System.Drawing.Point(87, 187);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 31);
             this.btnUpdate.TabIndex = 11;
@@ -176,11 +176,25 @@
             this.textBoxSearch.TabIndex = 13;
             this.textBoxSearch.TextChanged += new System.EventHandler(this.textBoxSearch_TextChanged);
             // 
+            // btnClear
+            // 
+            this.btnClear.BackColor = System.Drawing.Color.Tomato;
+            this.btnClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClear.ForeColor = System.Drawing.Color.White;
+            this.btnClear.Location = new System.Drawing.Point(168, 187);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(75, 31);
+            this.btnClear.TabIndex = 14;
+            this.btnClear.Text = "Clear";
+            this.btnClear.UseVisualStyleBackColor = false;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
             // VehicleSector
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(722, 230);
+            this.Controls.Add(this.btnClear);
             this.Controls.Add(this.textBoxSearch);
             this.Controls.Add(this.lblSearch);
             this.Controls.Add(this.btnUpdate);
@@ -218,5 +232,6 @@
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Label lblSearch;
         private System.Windows.Forms.TextBox textBoxSearch;
+        private System.Windows.Forms.Button btnClear;
     }
 }

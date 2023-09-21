@@ -8,17 +8,27 @@ using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using TransportManagementSystem.DataAccess;
+using TransportManagementSystem.DataInterface;
 
 namespace TransportManagementSystem.UI
 {
-    public partial class VehicleStartingPoint : Form
+    public partial class frmVehicleStartingPoint : Form
     {
-        public VehicleStartingPoint()
+
+        //Database connection
+        SqlConnection conn = new SqlConnection(Global.BDConn);
+
+        //Instance of data interface
+        TransportDataInterface tdf = new TransportDataInterface();
+
+        //Instance of data access
+        TransportDataAccess tda = new TransportDataAccess();
+
+        public frmVehicleStartingPoint()
         {
             InitializeComponent();
         }
 
-        TransportDataAccess tda = new TransportDataAccess();
         public void Clear()
         {
             textBoxId.Text = "";
@@ -32,12 +42,7 @@ namespace TransportManagementSystem.UI
 
         public void ComboboxDataLoad()
         {
-            SqlConnection conn = new SqlConnection(Global.BDConn);
-
-            //Open connection
-            conn.Open();
-
-            string sql = "SELECT ID, NAME FROM VechicleSector";
+            string sql = "SELECT ID, NAME FROM VehicleSector";
             SqlCommand cmd = new SqlCommand(sql, conn);
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
@@ -72,7 +77,7 @@ namespace TransportManagementSystem.UI
             comboBoxRouteID.ValueMember = "ID";
 
 
-            //Showing data on datagrid
+            ////Showing data on datagrid
             DataTable dt3 = tda.SelectVechileStartingPoint();
             dataGridViewStartingPoint.DataSource = dt3;
         }
@@ -90,7 +95,21 @@ namespace TransportManagementSystem.UI
 
         private void VehicleStartingPoint_Load(object sender, EventArgs e)
         {
+            // Subscribe to the RowHeaderMouseClick event
+            dataGridViewStartingPoint.RowHeaderMouseClick += dataGridViewStartingPoint_RowHeaderMouseClick;
+
+            //Call ComboboxDataLoad 
             ComboboxDataLoad();
+
+            //Disable update button
+            btnUpdate.Enabled = false;
+
+            //Set the initial selected index of comnoboxes to -1
+            comboBoxRouteID.SelectedIndex = -1;
+            comboBoxSectorID.SelectedIndex = -1;
+            comboBoxVehicleID.SelectedIndex = -1;
+
+           
                 
         }
 
@@ -106,6 +125,7 @@ namespace TransportManagementSystem.UI
 
         private void comboBoxSectorID_SelectedIndexChanged(object sender, EventArgs e)
         {
+          
 
         }
 
@@ -131,10 +151,10 @@ namespace TransportManagementSystem.UI
                 String ActiveInActiveValue = "";
 
                 //Get the data from text fied
-                tda.SectorID = Convert.ToInt32(comboBoxSectorID.SelectedValue);
-                tda.VehicleID = Convert.ToInt32(comboBoxVehicleID.SelectedValue);
-                tda.RouteID = Convert.ToInt32(comboBoxRouteID.SelectedValue);
-                tda.Name = textBoxName.Text;
+                tdf.SectorID = Convert.ToInt32(comboBoxSectorID.SelectedValue);
+                tdf.VehicleID = Convert.ToInt32(comboBoxVehicleID.SelectedValue);
+                tdf.RouteID = Convert.ToInt32(comboBoxRouteID.SelectedValue);
+                tdf.Name = textBoxName.Text;
 
                 if (rdoActive.Checked == true)
                 {
@@ -145,17 +165,8 @@ namespace TransportManagementSystem.UI
                     ActiveInActiveValue = "0";
                 }
 
-                bool isSuccess = tda.createVehicleStartingPoint(tda.Name, tda.SectorID, tda.VehicleID, tda.RouteID, ActiveInActiveValue);
+                tda.createVehicleStartingPoint(tdf.SectorID, tdf.VehicleID, tdf.RouteID,tdf.Name, ActiveInActiveValue);
 
-                if (isSuccess == true)
-                {
-                    MessageBox.Show("New Starting point Created Successfully");
-
-                }
-                else
-                {
-                    MessageBox.Show("Failed to create new Starting point. Try again!!");
-                }
 
                 //Refresh
                 //Showing data on datagrid
@@ -174,6 +185,7 @@ namespace TransportManagementSystem.UI
         {
             try
             {
+                //Check active status
                 if (!rdoActive.Checked && !rdoInActive.Checked)
                 {
 
@@ -184,11 +196,11 @@ namespace TransportManagementSystem.UI
                 }
                 String ActiveInActiveValue = "";
                 //Get the data from text fied
-                tda.ID = Convert.ToInt32(textBoxId.Text);
-                tda.Name = textBoxName.Text;
-                tda.SectorID = Convert.ToInt32(comboBoxSectorID.SelectedValue);
-                tda.VehicleID = Convert.ToInt32(comboBoxVehicleID.SelectedValue);
-                tda.RouteID = Convert.ToInt32(comboBoxRouteID.SelectedValue);
+                tdf.ID = Convert.ToInt32(textBoxId.Text);
+                tdf.SectorID = Convert.ToInt32(comboBoxSectorID.SelectedValue);
+                tdf.VehicleID = Convert.ToInt32(comboBoxVehicleID.SelectedValue);
+                tdf.RouteID = Convert.ToInt32(comboBoxRouteID.SelectedValue);
+                tdf.Name = textBoxName.Text;
 
 
                 if (rdoActive.Checked == true)
@@ -200,17 +212,9 @@ namespace TransportManagementSystem.UI
                     ActiveInActiveValue = "0";
                 }
 
-                bool isSuccess = tda.updateStartingPoint(tda.ID, tda.Name, tda.SectorID, tda.VehicleID, tda.RouteID, ActiveInActiveValue);
+                 tda.updateStartingPoint(tdf.ID, tdf.SectorID, tdf.VehicleID, tdf.RouteID,tdf.Name, ActiveInActiveValue);
 
-                if (isSuccess == true)
-                {
-                    MessageBox.Show("Startingpoint Updated Successfully");
-                }
-                else
-                {
-                    MessageBox.Show("Failed update Starting point. Try again!!");
-                }
-
+             
                 //Refresh
                 //Showing data on datagrid
                 DataTable dt = tda.SelectVechileStartingPoint();
@@ -218,6 +222,9 @@ namespace TransportManagementSystem.UI
 
                 //Clear the field
                 Clear();
+
+                //Disable update button
+                btnUpdate.Enabled = false;
 
             }
             catch (Exception ex)
@@ -230,15 +237,23 @@ namespace TransportManagementSystem.UI
         private void dataGridViewStartingPoint_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
 
-            ComboboxDataLoad();
+            //Disable save button and enable update button
+            btnSave.Enabled = false;
+            btnUpdate.Enabled = true;
 
             //Get the data from data grid view and load it to the textboxes respectively
             //Identify the row on which mouse is clicked
             int rowIndex = e.RowIndex;
             textBoxId.Text = dataGridViewStartingPoint.Rows[rowIndex].Cells[0].Value.ToString();
-            comboBoxSectorID.SelectedValue = dataGridViewStartingPoint.Rows[rowIndex].Cells[1].Value;
-            comboBoxVehicleID.SelectedValue = dataGridViewStartingPoint.Rows[rowIndex].Cells[2].Value;
-            comboBoxRouteID.SelectedValue = dataGridViewStartingPoint.Rows[rowIndex].Cells[3].Value;
+
+         
+            object selectedItem = dataGridViewStartingPoint.Rows[rowIndex].Cells[1].Value.ToString();
+            comboBoxSectorID.SelectedItem = selectedItem;
+            selectedItem = dataGridViewStartingPoint.Rows[rowIndex].Cells[2].Value.ToString();
+            comboBoxVehicleID.SelectedValue = selectedItem;
+            selectedItem = dataGridViewStartingPoint.Rows[rowIndex].Cells[3].Value.ToString();
+            comboBoxRouteID.SelectedValue = selectedItem;
+
             textBoxName.Text = dataGridViewStartingPoint.Rows[rowIndex].Cells[4].Value.ToString();
             int activeStatusInt = Convert.ToInt32(dataGridViewStartingPoint.Rows[rowIndex].Cells[5].Value);
             if (activeStatusInt == 1)
@@ -249,20 +264,33 @@ namespace TransportManagementSystem.UI
             {
                 rdoInActive.Checked = true;
             }
+
+            // Set the selected cell back to the current row
+            dataGridViewStartingPoint.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridViewStartingPoint.CurrentCell = dataGridViewStartingPoint.Rows[rowIndex].Cells[0];
         }
 
         //Search records
-        SqlConnection conn = new SqlConnection(Global.BDConn);
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
             //Get the value from text box
             string keyword = textBoxSearch.Text;
 
-            SqlDataAdapter sda = new SqlDataAdapter("SELECT *FROM VehicleStartingPoint where Name Like '%" + keyword + "%'", conn);
+            SqlDataAdapter sda = new SqlDataAdapter("SELECT STP.ID, SEC.[Name] AS 'Sector Name' , VEH.[Name] AS 'Vehicle Type', RT.[Name] AS 'Transport Route', STP.[Name], STP.IsActive FROM VehicleStartingPoint STP JOIN VehicleSector SEC ON STP.SectorID = SEC.ID JOIN VehicleType_Mst VEH ON STP.VehicleID = VEH.ID JOIN TransportRoute RT ON STP.RouteID = RT.ID WHERE STP.[Name] LIKE '%" + keyword + "%' OR SEC.[Name] LIKE '%" + keyword + "%' OR  VEH.[Name] LIKE '%" + keyword + "%' OR  RT.[Name] LIKE '%" + keyword + "%'", conn);
             DataTable dt = new DataTable();
             sda.Fill(dt);
             dataGridViewStartingPoint.DataSource = dt;
         }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            //Clear the fields
+            Clear();
+            //Disable update button and enable save button
+            btnSave.Enabled = true;
+            btnUpdate.Enabled = false;
+        }
+
 
         }
     }

@@ -45,6 +45,7 @@
             this.lblSearch = new System.Windows.Forms.Label();
             this.textBoxSearch = new System.Windows.Forms.TextBox();
             this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnClear = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewVehicle)).BeginInit();
             this.SuspendLayout();
             // 
@@ -112,7 +113,7 @@
             this.btnClose.BackColor = System.Drawing.Color.Red;
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(216, 265);
+            this.btnClose.Location = new System.Drawing.Point(240, 265);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 34);
             this.btnClose.TabIndex = 29;
@@ -125,7 +126,7 @@
             this.btnSave.BackColor = System.Drawing.Color.Green;
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(23, 265);
+            this.btnSave.Location = new System.Drawing.Point(4, 265);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 34);
             this.btnSave.TabIndex = 28;
@@ -207,8 +208,8 @@
             // 
             this.btnUpdate.BackColor = System.Drawing.Color.Yellow;
             this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.ForeColor = System.Drawing.Color.White;
-            this.btnUpdate.Location = new System.Drawing.Point(120, 265);
+            this.btnUpdate.ForeColor = System.Drawing.Color.Black;
+            this.btnUpdate.Location = new System.Drawing.Point(81, 265);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 34);
             this.btnUpdate.TabIndex = 37;
@@ -216,11 +217,25 @@
             this.btnUpdate.UseVisualStyleBackColor = false;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
+            // btnClear
+            // 
+            this.btnClear.BackColor = System.Drawing.Color.Tomato;
+            this.btnClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClear.ForeColor = System.Drawing.Color.White;
+            this.btnClear.Location = new System.Drawing.Point(160, 265);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(75, 34);
+            this.btnClear.TabIndex = 38;
+            this.btnClear.Text = "Clear";
+            this.btnClear.UseVisualStyleBackColor = false;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
             // VehicleType
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(729, 332);
+            this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.textBoxSearch);
             this.Controls.Add(this.lblSearch);
@@ -266,5 +281,6 @@
         private System.Windows.Forms.Label lblSearch;
         private System.Windows.Forms.TextBox textBoxSearch;
         private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Button btnClear;
     }
 }

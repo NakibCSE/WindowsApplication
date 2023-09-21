@@ -1,6 +1,6 @@
 ﻿namespace TransportManagementSystem.UI
 {
-    partial class VehicleStartingPoint
+    partial class frmVehicleStartingPoint
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VehicleStartingPoint));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmVehicleStartingPoint));
             this.btnClose = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.textBoxName = new System.Windows.Forms.TextBox();
@@ -45,8 +45,9 @@
             this.rdoActive = new System.Windows.Forms.RadioButton();
             this.rdoInActive = new System.Windows.Forms.RadioButton();
             this.dataGridViewStartingPoint = new System.Windows.Forms.DataGridView();
-            this.lblSearch = new System.Windows.Forms.Label();
             this.textBoxSearch = new System.Windows.Forms.TextBox();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.lblSearch = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStartingPoint)).BeginInit();
             this.SuspendLayout();
             // 
@@ -55,7 +56,7 @@
             this.btnClose.BackColor = System.Drawing.Color.Red;
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(188, 351);
+            this.btnClose.Location = new System.Drawing.Point(243, 351);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 37);
             this.btnClose.TabIndex = 16;
@@ -68,7 +69,7 @@
             this.btnSave.BackColor = System.Drawing.Color.Green;
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(18, 351);
+            this.btnSave.Location = new System.Drawing.Point(5, 351);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 37);
             this.btnSave.TabIndex = 15;
@@ -153,8 +154,8 @@
             // 
             this.btnUpdate.BackColor = System.Drawing.Color.Yellow;
             this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.ForeColor = System.Drawing.Color.White;
-            this.btnUpdate.Location = new System.Drawing.Point(99, 351);
+            this.btnUpdate.ForeColor = System.Drawing.Color.Black;
+            this.btnUpdate.Location = new System.Drawing.Point(83, 351);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 37);
             this.btnUpdate.TabIndex = 23;
@@ -219,39 +220,52 @@
             // dataGridViewStartingPoint
             // 
             this.dataGridViewStartingPoint.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewStartingPoint.Location = new System.Drawing.Point(307, 90);
+            this.dataGridViewStartingPoint.Location = new System.Drawing.Point(329, 90);
             this.dataGridViewStartingPoint.Name = "dataGridViewStartingPoint";
-            this.dataGridViewStartingPoint.Size = new System.Drawing.Size(613, 261);
+            this.dataGridViewStartingPoint.Size = new System.Drawing.Size(591, 261);
             this.dataGridViewStartingPoint.TabIndex = 30;
             this.dataGridViewStartingPoint.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewStartingPoint_RowHeaderMouseClick);
-            // 
-            // lblSearch
-            // 
-            this.lblSearch.AutoSize = true;
-            this.lblSearch.BackColor = System.Drawing.Color.Transparent;
-            this.lblSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSearch.Location = new System.Drawing.Point(304, 57);
-            this.lblSearch.Name = "lblSearch";
-            this.lblSearch.Size = new System.Drawing.Size(57, 16);
-            this.lblSearch.TabIndex = 31;
-            this.lblSearch.Text = "Search";
             // 
             // textBoxSearch
             // 
             this.textBoxSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxSearch.Location = new System.Drawing.Point(367, 54);
+            this.textBoxSearch.Location = new System.Drawing.Point(411, 54);
             this.textBoxSearch.Name = "textBoxSearch";
             this.textBoxSearch.Size = new System.Drawing.Size(203, 22);
             this.textBoxSearch.TabIndex = 32;
             this.textBoxSearch.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
-            // VehicleStartingPoint
+            // btnClear
+            // 
+            this.btnClear.BackColor = System.Drawing.Color.Tomato;
+            this.btnClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClear.ForeColor = System.Drawing.Color.White;
+            this.btnClear.Location = new System.Drawing.Point(162, 351);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(75, 37);
+            this.btnClear.TabIndex = 33;
+            this.btnClear.Text = "Clear";
+            this.btnClear.UseVisualStyleBackColor = false;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
+            // lblSearch
+            // 
+            this.lblSearch.AutoSize = true;
+            this.lblSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSearch.Location = new System.Drawing.Point(329, 58);
+            this.lblSearch.Name = "lblSearch";
+            this.lblSearch.Size = new System.Drawing.Size(57, 16);
+            this.lblSearch.TabIndex = 34;
+            this.lblSearch.Text = "Search";
+            // 
+            // frmVehicleStartingPoint
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(932, 400);
-            this.Controls.Add(this.textBoxSearch);
             this.Controls.Add(this.lblSearch);
+            this.Controls.Add(this.btnClear);
+            this.Controls.Add(this.textBoxSearch);
             this.Controls.Add(this.dataGridViewStartingPoint);
             this.Controls.Add(this.rdoInActive);
             this.Controls.Add(this.rdoActive);
@@ -269,7 +283,7 @@
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.lblID);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "VehicleStartingPoint";
+            this.Name = "frmVehicleStartingPoint";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "VehicleStartingPoint";
             this.Load += new System.EventHandler(this.VehicleStartingPoint_Load);
@@ -297,7 +311,8 @@
         private System.Windows.Forms.RadioButton rdoActive;
         private System.Windows.Forms.RadioButton rdoInActive;
         private System.Windows.Forms.DataGridView dataGridViewStartingPoint;
-        private System.Windows.Forms.Label lblSearch;
         private System.Windows.Forms.TextBox textBoxSearch;
+        private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.Label lblSearch;
     }
 }

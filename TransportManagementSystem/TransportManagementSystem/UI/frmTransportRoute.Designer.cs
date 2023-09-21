@@ -1,6 +1,6 @@
 ﻿namespace TransportManagementSystem.UI
 {
-    partial class TransportRoute
+    partial class frmTransportRoute
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TransportRoute));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTransportRoute));
             this.lblID = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
             this.lblName = new System.Windows.Forms.Label();
@@ -39,6 +39,7 @@
             this.dataGridViewTransportRoute = new System.Windows.Forms.DataGridView();
             this.textBoxSearch = new System.Windows.Forms.TextBox();
             this.lblSearch = new System.Windows.Forms.Label();
+            this.btnClear = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTransportRoute)).BeginInit();
             this.SuspendLayout();
             // 
@@ -58,9 +59,9 @@
             this.btnClose.BackColor = System.Drawing.Color.Red;
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(197, 153);
+            this.btnClose.Location = new System.Drawing.Point(260, 156);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(75, 33);
+            this.btnClose.Size = new System.Drawing.Size(72, 33);
             this.btnClose.TabIndex = 16;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = false;
@@ -99,7 +100,7 @@
             this.btnSave.BackColor = System.Drawing.Color.Green;
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(24, 153);
+            this.btnSave.Location = new System.Drawing.Point(6, 153);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 33);
             this.btnSave.TabIndex = 15;
@@ -111,8 +112,8 @@
             // 
             this.btnUpdate.BackColor = System.Drawing.Color.Yellow;
             this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.ForeColor = System.Drawing.Color.White;
-            this.btnUpdate.Location = new System.Drawing.Point(108, 153);
+            this.btnUpdate.ForeColor = System.Drawing.Color.Black;
+            this.btnUpdate.Location = new System.Drawing.Point(87, 154);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 33);
             this.btnUpdate.TabIndex = 17;
@@ -123,17 +124,16 @@
             // dataGridViewTransportRoute
             // 
             this.dataGridViewTransportRoute.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewTransportRoute.Location = new System.Drawing.Point(307, 68);
+            this.dataGridViewTransportRoute.Location = new System.Drawing.Point(355, 68);
             this.dataGridViewTransportRoute.Name = "dataGridViewTransportRoute";
             this.dataGridViewTransportRoute.Size = new System.Drawing.Size(233, 118);
             this.dataGridViewTransportRoute.TabIndex = 18;
-            this.dataGridViewTransportRoute.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewTransportRoute_CellContentClick);
             this.dataGridViewTransportRoute.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewTransportRoute_RowHeaderMouseClick);
             // 
             // textBoxSearch
             // 
             this.textBoxSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxSearch.Location = new System.Drawing.Point(367, 40);
+            this.textBoxSearch.Location = new System.Drawing.Point(415, 40);
             this.textBoxSearch.Name = "textBoxSearch";
             this.textBoxSearch.Size = new System.Drawing.Size(173, 22);
             this.textBoxSearch.TabIndex = 20;
@@ -143,17 +143,31 @@
             // 
             this.lblSearch.AutoSize = true;
             this.lblSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSearch.Location = new System.Drawing.Point(304, 40);
+            this.lblSearch.Location = new System.Drawing.Point(352, 40);
             this.lblSearch.Name = "lblSearch";
             this.lblSearch.Size = new System.Drawing.Size(57, 16);
             this.lblSearch.TabIndex = 19;
             this.lblSearch.Text = "Search";
             // 
+            // btnClear
+            // 
+            this.btnClear.BackColor = System.Drawing.Color.Tomato;
+            this.btnClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClear.ForeColor = System.Drawing.Color.White;
+            this.btnClear.Location = new System.Drawing.Point(174, 155);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(74, 33);
+            this.btnClear.TabIndex = 21;
+            this.btnClear.Text = "Clear";
+            this.btnClear.UseVisualStyleBackColor = false;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
             // TransportRoute
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(563, 212);
+            this.ClientSize = new System.Drawing.Size(624, 212);
+            this.Controls.Add(this.btnClear);
             this.Controls.Add(this.textBoxSearch);
             this.Controls.Add(this.lblSearch);
             this.Controls.Add(this.dataGridViewTransportRoute);
@@ -187,6 +201,7 @@
         private System.Windows.Forms.DataGridView dataGridViewTransportRoute;
         private System.Windows.Forms.TextBox textBoxSearch;
         private System.Windows.Forms.Label lblSearch;
+        private System.Windows.Forms.Button btnClear;
 
     }
 }

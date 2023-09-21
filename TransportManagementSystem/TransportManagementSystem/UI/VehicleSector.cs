@@ -8,12 +8,20 @@ using System.Text;
 using System.Windows.Forms;
 using TransportManagementSystem.DataAccess;
 using System.Data.SqlClient;
+using TransportManagementSystem.DataInterface;
 
 namespace TransportManagementSystem
 {
     public partial class VehicleSector : Form
     {
+        //Database connection
+        SqlConnection conn = new SqlConnection(Global.BDConn);
+
+        //Instance of data access 
         TransportDataAccess tda = new TransportDataAccess();
+
+        //Instance of data interface
+        TransportDataInterface tdf = new TransportDataInterface();
 
         String ActiveInActiveValue = "";
         public VehicleSector()
@@ -28,6 +36,9 @@ namespace TransportManagementSystem
             DataTable dt = tda.SelectVehicleSector();
             dgvVehicleSectorList.DataSource = dt;
 
+            //Disable update button
+            btnUpdate.Enabled = false;
+
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -39,7 +50,7 @@ namespace TransportManagementSystem
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-
+            //Check Active InActive status checked or not
             if (!rdoActive.Checked && !rdoInActive.Checked)
             {
 
@@ -50,7 +61,7 @@ namespace TransportManagementSystem
             }
 
             //Get the data from text fied
-            tda.Name = textBoxName.Text;
+            tdf.Name = textBoxName.Text;
 
             if (rdoActive.Checked == true)
             {
@@ -61,16 +72,8 @@ namespace TransportManagementSystem
                 ActiveInActiveValue = "0";
             }
 
-            bool isSuccess = tda.createVehicleSector(Name, ActiveInActiveValue);
-
-            if (isSuccess == true)
-            {
-                MessageBox.Show("Vehicle Sector Created Successfully");
-            }
-            else
-            {
-                MessageBox.Show("Failed to create Vehicle sector. Try again!!");
-            }
+            //Call the create vehicle sector metod to create new vehicle sector
+            tda.createVehicleSector(tdf.Name, ActiveInActiveValue);
 
             //Refresh
             //Showing data on datagrid
@@ -91,6 +94,10 @@ namespace TransportManagementSystem
 
         private void dgvVehicleSectorList_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
+            //Enable the update button and disable the save button
+            btnUpdate.Enabled = true;
+            btnSave.Enabled = false;
+
             //Get the data from data grid view and load it to the textboxes respectively
             //Identify the row on which mouse is clicked
             int rowIndex = e.RowIndex;
@@ -111,6 +118,7 @@ namespace TransportManagementSystem
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            //Check active inactive status
             if (!rdoActive.Checked && !rdoInActive.Checked)
             {
 
@@ -121,8 +129,8 @@ namespace TransportManagementSystem
             }
 
             //Get the data from text fied
-            tda.ID = Convert.ToInt32(textBoxId.Text);
-            tda.Name = textBoxName.Text;
+            tdf.ID = Convert.ToInt32(textBoxId.Text);
+            tdf.Name = textBoxName.Text;
 
             if (rdoActive.Checked == true)
             {
@@ -133,16 +141,7 @@ namespace TransportManagementSystem
                 ActiveInActiveValue = "0";
             }
 
-            bool isSuccess = tda.updateVehicleSector(tda.ID, tda.Name, ActiveInActiveValue);
-
-            if (isSuccess == true)
-            {
-                MessageBox.Show("Vehicle Sector Updated Successfully");
-            }
-            else
-            {
-                MessageBox.Show("Failed to create Vehicle sector. Try again!!");
-            }
+            tda.updateVehicleSector(tdf.ID, tdf.Name, ActiveInActiveValue);
 
             //Refresh
             //Showing data on datagrid
@@ -152,8 +151,11 @@ namespace TransportManagementSystem
             //Clear the field
             clear();
 
+            //Disable the update button and enable the save button
+            btnSave.Enabled = true;
+            btnUpdate.Enabled = false;
         }
-        SqlConnection conn = new SqlConnection(Global.BDConn);
+    
         private void textBoxSearch_TextChanged(object sender, EventArgs e)
         {
             //Get the value from text box
@@ -165,9 +167,14 @@ namespace TransportManagementSystem
             dgvVehicleSectorList.DataSource = dt;
         }
 
-        private void dgvVehicleSectorList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void btnClear_Click(object sender, EventArgs e)
         {
+            //Clear the fields
+            clear();
 
+            //Enable the save button and disable the update button
+            btnUpdate.Enabled = false;
+            btnSave.Enabled = true;
         }
     }
 }

@@ -105,7 +105,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(841, 296);
+            this.ClientSize = new System.Drawing.Size(841, 224);
             this.Controls.Add(this.btnPickUpPoint);
             this.Controls.Add(this.textBoxBanner);
             this.Controls.Add(this.btnStartingPoint);
@@ -113,6 +113,7 @@
             this.Controls.Add(this.btnVehicleType);
             this.Controls.Add(this.VehicleSector);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "Transport";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Transport";

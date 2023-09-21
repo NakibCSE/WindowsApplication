@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{755B3D54-2D67-4C71-BAB3-288A3C18A88A}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BillingSystem</RootNamespace>
+    <AssemblyName>BillingSystem</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BLL\CategoriesBLL.cs" />
+    <Compile Include="BLL\LoginBLL.cs" />
+    <Compile Include="BLL\userBLL.cs" />
+    <Compile Include="DAL\CategoriesDAL.cs" />
+    <Compile Include="DAL\LoginDAL.cs" />
+    <Compile Include="DAL\userDAL.cs" />
+    <Compile Include="UI\frmAdminDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmAdminDashboard.Designer.cs">
+      <DependentUpon>frmAdminDashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\frmCategories.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmCategories.Designer.cs">
+      <DependentUpon>frmCategories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\frmUserDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmUserDashboard.Designer.cs">
+      <DependentUpon>frmUserDashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Global.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\frmUsers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmUsers.Designer.cs">
+      <DependentUpon>frmUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="obj\x86\Debug\BillingSystem.frmAdminDashboard.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\BillingSystem.frmUserDashboard.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\BillingSystem.Properties.Resources.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\BillingSystem.UI.frmUsers.resources" />
+    <EmbeddedResource Include="UI\frmAdminDashboard.resx">
+      <DependentUpon>frmAdminDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmCategories.resx">
+      <DependentUpon>frmCategories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmUserDashboard.resx">
+      <DependentUpon>frmUserDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="UI\frmUsers.resx">
+      <DependentUpon>frmUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="bin\Debug\BillingSystem.vshost.exe.manifest" />
+    <None Include="obj\x86\Debug\BillingSystem.csproj.GenerateResource.Cache" />
+    <None Include="obj\x86\Debug\DesignTimeResolveAssemblyReferences.cache" />
+    <None Include="obj\x86\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Image\" />
+    <Folder Include="obj\x86\Debug\TempPE\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\BillingSystem.exe" />
+    <Content Include="bin\Debug\BillingSystem.pdb" />
+    <Content Include="bin\Debug\BillingSystem.vshost.exe" />
+    <Content Include="obj\x86\Debug\BillingSystem.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\x86\Debug\BillingSystem.exe" />
+    <Content Include="obj\x86\Debug\BillingSystem.pdb" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

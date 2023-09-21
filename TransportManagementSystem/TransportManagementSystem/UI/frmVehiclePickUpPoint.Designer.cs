@@ -1,6 +1,6 @@
 ﻿namespace TransportManagementSystem.UI
 {
-    partial class VehiclePickUpPoint
+    partial class frmVehiclePickUpPoint
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VehiclePickUpPoint));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmVehiclePickUpPoint));
             this.textBoxNote = new System.Windows.Forms.TextBox();
             this.lblNote = new System.Windows.Forms.Label();
             this.lblStartingPointID = new System.Windows.Forms.Label();
@@ -45,6 +45,7 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.comboBoxStartingPointID = new System.Windows.Forms.ComboBox();
             this.rdoActive = new System.Windows.Forms.RadioButton();
+            this.btnClear = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPickUpPoints)).BeginInit();
             this.SuspendLayout();
             // 
@@ -78,14 +79,13 @@
             this.lblStartingPointID.Size = new System.Drawing.Size(100, 16);
             this.lblStartingPointID.TabIndex = 29;
             this.lblStartingPointID.Text = "Starting Point";
-            this.lblStartingPointID.Click += new System.EventHandler(this.lblStartingPointID_Click);
             // 
             // btnClose
             // 
             this.btnClose.BackColor = System.Drawing.Color.Red;
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(230, 281);
+            this.btnClose.Location = new System.Drawing.Point(277, 281);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 31);
             this.btnClose.TabIndex = 28;
@@ -98,7 +98,7 @@
             this.btnSave.BackColor = System.Drawing.Color.Green;
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(52, 281);
+            this.btnSave.Location = new System.Drawing.Point(13, 281);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 31);
             this.btnSave.TabIndex = 27;
@@ -190,8 +190,8 @@
             // 
             this.btnUpdate.BackColor = System.Drawing.Color.Yellow;
             this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.ForeColor = System.Drawing.Color.White;
-            this.btnUpdate.Location = new System.Drawing.Point(139, 281);
+            this.btnUpdate.ForeColor = System.Drawing.Color.Black;
+            this.btnUpdate.Location = new System.Drawing.Point(103, 281);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 31);
             this.btnUpdate.TabIndex = 36;
@@ -220,11 +220,25 @@
             this.rdoActive.Text = "Active ";
             this.rdoActive.UseVisualStyleBackColor = true;
             // 
-            // VehiclePickUpPoint
+            // btnClear
+            // 
+            this.btnClear.BackColor = System.Drawing.Color.Tomato;
+            this.btnClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClear.ForeColor = System.Drawing.Color.White;
+            this.btnClear.Location = new System.Drawing.Point(193, 281);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(75, 31);
+            this.btnClear.TabIndex = 39;
+            this.btnClear.Text = "Clear";
+            this.btnClear.UseVisualStyleBackColor = false;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
+            // frmVehiclePickUpPoint
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(880, 342);
+            this.Controls.Add(this.btnClear);
             this.Controls.Add(this.rdoActive);
             this.Controls.Add(this.comboBoxStartingPointID);
             this.Controls.Add(this.btnUpdate);
@@ -242,7 +256,8 @@
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.lblID);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "VehiclePickUpPoint";
+            this.Name = "frmVehiclePickUpPoint";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "VehiclePickUpPoint";
             this.Load += new System.EventHandler(this.VehiclePickUpPoint_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPickUpPoints)).EndInit();
@@ -269,6 +284,7 @@
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.ComboBox comboBoxStartingPointID;
         private System.Windows.Forms.RadioButton rdoActive;
+        private System.Windows.Forms.Button btnClear;
 
     }
 }

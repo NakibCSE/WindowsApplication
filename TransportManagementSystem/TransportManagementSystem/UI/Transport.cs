@@ -13,7 +13,6 @@ namespace TransportManagementSystem
 {
     public partial class Transport : Form
     {
-        TransportDataAccess DAObj = new TransportDataAccess();
         public Transport()
         {
             InitializeComponent();
@@ -36,21 +35,21 @@ namespace TransportManagementSystem
 
         private void btnTransportRoute_Click(object sender, EventArgs e)
         {
-            TransportRoute tr = new TransportRoute();
+            frmTransportRoute tr = new frmTransportRoute();
             tr.Show();
             this.Hide();
         }
 
         private void btnStartingPoint_Click(object sender, EventArgs e)
         {
-            VehicleStartingPoint sp = new VehicleStartingPoint();
+            frmVehicleStartingPoint sp = new frmVehicleStartingPoint();
             sp.Show();
             this.Hide();
         }
 
         private void btnPickUpPoint_Click(object sender, EventArgs e)
         {
-            VehiclePickUpPoint vcp = new VehiclePickUpPoint();
+            frmVehiclePickUpPoint vcp = new frmVehiclePickUpPoint();
             vcp.Show();
             this.Hide();
         }

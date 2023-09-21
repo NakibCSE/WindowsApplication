@@ -1,0 +1,12 @@
+E:\WindowsApplication\BillingSystem\BillingSystem\obj\x86\Debug\BillingSystem.frmAdminDashboard.resources
+E:\WindowsApplication\BillingSystem\BillingSystem\obj\x86\Debug\BillingSystem.frmUserDashboard.resources
+E:\WindowsApplication\BillingSystem\BillingSystem\obj\x86\Debug\BillingSystem.Properties.Resources.resources
+E:\WindowsApplication\BillingSystem\BillingSystem\obj\x86\Debug\BillingSystem.UI.frmUsers.resources
+E:\WindowsApplication\BillingSystem\BillingSystem\obj\x86\Debug\BillingSystem.UI.frmLogin.resources
+E:\WindowsApplication\BillingSystem\BillingSystem\obj\x86\Debug\BillingSystem.csproj.GenerateResource.Cache
+E:\WindowsApplication\BillingSystem\BillingSystem\bin\Debug\BillingSystem.exe
+E:\WindowsApplication\BillingSystem\BillingSystem\bin\Debug\BillingSystem.pdb
+E:\WindowsApplication\BillingSystem\BillingSystem\obj\x86\Debug\BillingSystem.exe
+E:\WindowsApplication\BillingSystem\BillingSystem\obj\x86\Debug\BillingSystem.pdb
+E:\WindowsApplication\BillingSystem\BillingSystem\obj\x86\Debug\BillingSystem.csprojResolveAssemblyReference.cache
+E:\WindowsApplication\BillingSystem\BillingSystem\obj\x86\Debug\BillingSystem.UI.frmCategories.resources
